@@ -1,0 +1,26 @@
+def workspace;
+node
+{
+    stage ('checkout')
+    {
+ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2299957e-22e4-477f-b2c7-14a8c528e989', url: 'https://github.com/Buddhisagar2020/Devops-training']]])       
+    }
+    workspace =pwd()
+    stage('Static Code Analysis')
+   {
+       echo "Static Code Analysis"
+   } 
+   stage('Build')
+   {
+       echo "Build the code"
+   }
+   stage('Unit Testing')
+   {
+       echo 'Unit Testing'
+       
+       stage('Delivery')
+       
+       echo "Delivery the code"
+       
+   }
+}
